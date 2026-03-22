@@ -43,7 +43,8 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
 
     /* Premium Cali Colors (Multimedia Engineer Style) - Neon & Vivid */
     --cali-red: 345 85% 55%;
-    --cali-blue: 220 90% 60%; /* Stunning cyan/neon blue instead of pale baby blue */
+    --cali-blue: 220 90% 60%;
+    /* Stunning cyan/neon blue instead of pale baby blue */
     --cali-light-blue: 220 90% 60%;
     --cali-cream: 45 40% 90%;
     --cali-green: 150 80% 50%;
@@ -90,11 +91,18 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-poppins;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
   }
 }
@@ -117,39 +125,104 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
 }
 
 /* Clases personalizadas para colores de Cali (Usando variables CSS dinámicas) */
-.bg-cali-red { background-color: hsl(var(--cali-red)); }
-.bg-cali-blue { background-color: hsl(var(--cali-blue)); }
-.bg-cali-cream { background-color: hsl(var(--cali-cream)); }
-.bg-cali-green { background-color: hsl(var(--cali-green)); }
-.bg-cali-yellow { background-color: hsl(var(--cali-yellow)); }
-.bg-cali-orange { background-color: hsl(var(--cali-orange)); }
-.bg-cali-pink { background-color: hsl(var(--cali-pink)); }
-.bg-cali-purple { background-color: hsl(var(--cali-purple)); }
-.bg-cali-teal { background-color: hsl(var(--cali-teal)); }
+.bg-cali-red {
+  background-color: hsl(var(--cali-red));
+}
 
-.text-cali-red { color: hsl(var(--cali-red)); text-shadow: 0 0 10px hsla(var(--cali-red), 0.3); }
-.text-cali-blue { color: hsl(var(--cali-blue)); text-shadow: 0 0 10px hsla(var(--cali-blue), 0.3); }
-.text-cali-cream { color: hsl(var(--cali-cream)); }
-.text-cali-green { color: hsl(var(--cali-green)); text-shadow: 0 0 10px hsla(var(--cali-green), 0.3); }
-.text-cali-yellow { color: hsl(var(--cali-yellow)); text-shadow: 0 0 10px hsla(var(--cali-yellow), 0.3); }
-.text-cali-orange { color: hsl(var(--cali-orange)); text-shadow: 0 0 10px hsla(var(--cali-orange), 0.3); }
-.text-cali-pink { color: hsl(var(--cali-pink)); text-shadow: 0 0 10px hsla(var(--cali-pink), 0.3); }
-.text-cali-purple { color: hsl(var(--cali-purple)); text-shadow: 0 0 10px hsla(var(--cali-purple), 0.3); }
-.text-cali-teal { color: hsl(var(--cali-teal)); text-shadow: 0 0 10px hsla(var(--cali-teal), 0.3); }
+.bg-cali-blue {
+  background-color: hsl(var(--cali-blue));
+}
 
-.hover\:bg-cali-red\/90:hover { background-color: hsla(var(--cali-red), 0.9); }
-.hover\:bg-cali-orange\/90:hover { background-color: hsla(var(--cali-orange), 0.9); }
+.bg-cali-cream {
+  background-color: hsl(var(--cali-cream));
+}
+
+.bg-cali-green {
+  background-color: hsl(var(--cali-green));
+}
+
+.bg-cali-yellow {
+  background-color: hsl(var(--cali-yellow));
+}
+
+.bg-cali-orange {
+  background-color: hsl(var(--cali-orange));
+}
+
+.bg-cali-pink {
+  background-color: hsl(var(--cali-pink));
+}
+
+.bg-cali-purple {
+  background-color: hsl(var(--cali-purple));
+}
+
+.bg-cali-teal {
+  background-color: hsl(var(--cali-teal));
+}
+
+.text-cali-red {
+  color: hsl(var(--cali-red));
+  text-shadow: 0 0 10px hsla(var(--cali-red), 0.3);
+}
+
+.text-cali-blue {
+  color: hsl(var(--cali-blue));
+  text-shadow: 0 0 10px hsla(var(--cali-blue), 0.3);
+}
+
+.text-cali-cream {
+  color: hsl(var(--cali-cream));
+}
+
+.text-cali-green {
+  color: hsl(var(--cali-green));
+  text-shadow: 0 0 10px hsla(var(--cali-green), 0.3);
+}
+
+.text-cali-yellow {
+  color: hsl(var(--cali-yellow));
+  text-shadow: 0 0 10px hsla(var(--cali-yellow), 0.3);
+}
+
+.text-cali-orange {
+  color: hsl(var(--cali-orange));
+  text-shadow: 0 0 10px hsla(var(--cali-orange), 0.3);
+}
+
+.text-cali-pink {
+  color: hsl(var(--cali-pink));
+  text-shadow: 0 0 10px hsla(var(--cali-pink), 0.3);
+}
+
+.text-cali-purple {
+  color: hsl(var(--cali-purple));
+  text-shadow: 0 0 10px hsla(var(--cali-purple), 0.3);
+}
+
+.text-cali-teal {
+  color: hsl(var(--cali-teal));
+  text-shadow: 0 0 10px hsla(var(--cali-teal), 0.3);
+}
+
+.hover\:bg-cali-red\/90:hover {
+  background-color: hsla(var(--cali-red), 0.9);
+}
+
+.hover\:bg-cali-orange\/90:hover {
+  background-color: hsla(var(--cali-orange), 0.9);
+}
 
 /* Patrones y texturas tecnológicas / premium */
 .bg-pattern-salsa {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
   background-size: 32px 32px;
 }
 
 .bg-pattern-tropical {
-  background: 
-    linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%), 
-    linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%);
+  background:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%);
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
 }
@@ -160,8 +233,17 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
 }
 
 @keyframes float-pulse {
-  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 15px hsla(var(--cali-orange), 0.5)); }
-  50% { transform: translateY(-5px) scale(1.02); filter: drop-shadow(0 0 25px hsla(var(--cali-orange), 0.8)); }
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 15px hsla(var(--cali-orange), 0.5));
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.02);
+    filter: drop-shadow(0 0 25px hsla(var(--cali-orange), 0.8));
+  }
 }
 
 /* Estilos para tarjetas premium */
@@ -182,14 +264,12 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    hsl(var(--cali-red)),
-    hsl(var(--cali-orange)),
-    hsl(var(--cali-yellow)),
-    hsl(var(--cali-green)),
-    hsl(var(--cali-blue))
-  );
+  background: linear-gradient(90deg,
+      hsl(var(--cali-red)),
+      hsl(var(--cali-orange)),
+      hsl(var(--cali-yellow)),
+      hsl(var(--cali-green)),
+      hsl(var(--cali-blue)));
   opacity: 0.7;
 }
 
@@ -205,7 +285,7 @@ Implementa clases de utilidad para efectos de glassmorphism y elementos interact
   overflow: hidden;
   transition: all 0.3s ease;
   z-index: 1;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-cali::before {
