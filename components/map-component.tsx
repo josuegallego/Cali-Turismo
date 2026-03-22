@@ -132,37 +132,37 @@ export default function MapComponent({ attractionParam }: MapComponentProps) {
           ? attractionsData
           : attractionsData.filter((attraction) => attraction.category === activeCategory)
 
-      // Crear iconos personalizados por categoría
+      // Crear iconos personalizados por categoría - Representing Cali Colors
       const categoryIcons: { [key: string]: any } = {
         cultura: L.divIcon({
           className: "custom-div-icon",
-          html: `<div style="background-color: #E63946; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">C</div>`,
-          iconSize: [30, 30],
-          iconAnchor: [15, 15],
+          html: `<div style="background-color: #345 85% 55%; width: 34px; height: 34px; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: 900; border: 2px solid white; box-shadow: 0 0 15px rgba(230, 57, 70, 0.4); transform: rotate(45deg);"><span style="transform: rotate(-45deg);">C</span></div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
         historia: L.divIcon({
           className: "custom-div-icon",
-          html: `<div style="background-color: #457B9D; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">H</div>`,
-          iconSize: [30, 30],
-          iconAnchor: [15, 15],
+          html: `<div style="background-color: #457B9D; width: 34px; height: 34px; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: 900; border: 2px solid white; box-shadow: 0 0 15px rgba(69, 123, 157, 0.4); transform: rotate(45deg);"><span style="transform: rotate(-45deg);">H</span></div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
         naturaleza: L.divIcon({
           className: "custom-div-icon",
-          html: `<div style="background-color: #2A9D8F; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">N</div>`,
-          iconSize: [30, 30],
-          iconAnchor: [15, 15],
+          html: `<div style="background-color: #2A9D8F; width: 34px; height: 34px; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: 900; border: 2px solid white; box-shadow: 0 0 15px rgba(42, 157, 143, 0.4); transform: rotate(45deg);"><span style="transform: rotate(-45deg);">N</span></div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
         gastronomia: L.divIcon({
           className: "custom-div-icon",
-          html: `<div style="background-color: #F4A261; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">G</div>`,
-          iconSize: [30, 30],
-          iconAnchor: [15, 15],
+          html: `<div style="background-color: #F8B400; width: 34px; height: 34px; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: black; font-weight: 900; border: 2px solid white; box-shadow: 0 0 15px rgba(248, 180, 0, 0.4); transform: rotate(45deg);"><span style="transform: rotate(-45deg);">G</span></div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
         salsa: L.divIcon({
           className: "custom-div-icon",
-          html: `<div style="background-color: #E76F51; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">S</div>`,
-          iconSize: [30, 30],
-          iconAnchor: [15, 15],
+          html: `<div style="background-color: #E63946; width: 34px; height: 34px; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: white; font-weight: 900; border: 2px solid white; box-shadow: 0 0 20px rgba(230, 57, 70, 0.6); transform: rotate(45deg);"><span style="transform: rotate(-45deg);">S</span></div>`,
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
         }),
       }
 
@@ -170,19 +170,19 @@ export default function MapComponent({ attractionParam }: MapComponentProps) {
       filteredAttractions.forEach((attraction) => {
         // Crear un contenido más atractivo para el popup
         const popupContent = `
-          <div style="padding: 10px; max-width: 200px;">
-            <h3 style="font-weight: bold; margin-bottom: 8px; font-size: 16px;">${attraction.name}</h3>
-            <div style="width: 100%; height: 100px; position: relative; margin-bottom: 8px; overflow: hidden; border-radius: 4px;">
+          <div style="padding: 16px; background: #0a0a0c; color: white; min-width: 200px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="font-weight: 900; margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #E63946;">${attraction.name}</h3>
+            <div style="width: 100%; height: 110px; position: relative; margin-bottom: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
               <img src="${attraction.image}" 
                    alt="${attraction.name}" 
-                   style="width: 100%; height: 100%; object-fit: cover;" 
+                   style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8);" 
                    onerror="this.src='/placeholder.svg?height=300&width=500&text=${encodeURIComponent(attraction.name)}'" />
             </div>
-            <p style="font-size: 14px; margin-bottom: 8px;">${attraction.shortDescription}</p>
+            <p style="font-size: 11px; margin-bottom: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">${attraction.shortDescription}</p>
             <button 
               id="details-btn-${attraction.id}"
-              style="background-color: #E63946; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; width: 100%;">
-              Ver detalles
+              style="background-color: transparent; border: 1px solid #E63946; color: white; padding: 10px; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+              EXPLORAR DATA
             </button>
           </div>
         `
@@ -265,15 +265,24 @@ export default function MapComponent({ attractionParam }: MapComponentProps) {
           border: none;
         }
         .custom-popup .leaflet-popup-content-wrapper {
-          border-radius: 8px;
-          box-shadow: 0 3px 14px rgba(0,0,0,0.2);
+          background: #0a0a0c;
+          color: white;
+          border-radius: 0;
+          padding: 0;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(230, 57, 70, 0.1);
+          border: 1px solid rgba(255,255,255,0.05);
         }
         .custom-popup .leaflet-popup-content {
           margin: 0;
           padding: 0;
         }
         .custom-popup .leaflet-popup-tip {
-          background-color: white;
+          background-color: #0a0a0c;
+          border: 1px solid rgba(255,255,255,0.05);
+        }
+        .leaflet-popup-close-button {
+          color: white !important;
+          padding: 8px !important;
         }
       `}</style>
     </div>

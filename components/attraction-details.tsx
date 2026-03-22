@@ -49,21 +49,21 @@ export default function AttractionDetails() {
     await loadGooglePhotos(selectedAttraction.id)
   }
 
-  // Obtener color de categoría
+  // Obtener color de categoría - Updated for High Contrast & Cali Vibes
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "cultura":
-        return "bg-cali-red/10 text-cali-red border-cali-red/20"
+        return "bg-cali-red/20 text-cali-red border-cali-red/40"
       case "historia":
-        return "bg-cali-blue/10 text-cali-blue border-cali-blue/20"
+        return "bg-cali-blue/20 text-white border-cali-blue/40 shadow-[0_0_10px_rgba(var(--cali-blue),0.2)]"
       case "naturaleza":
-        return "bg-cali-green/10 text-cali-green border-cali-green/20"
+        return "bg-cali-green/20 text-cali-green border-cali-green/40 shadow-[0_0_10px_rgba(var(--cali-green),0.2)]"
       case "gastronomia":
-        return "bg-cali-orange/10 text-cali-orange border-cali-orange/20"
+        return "bg-cali-yellow/20 text-cali-yellow border-cali-yellow/40"
       case "salsa":
-        return "bg-cali-pink/10 text-cali-pink border-cali-pink/20"
+        return "bg-cali-red/20 text-cali-red border-cali-red/40 animate-pulse"
       default:
-        return "bg-gray-100 text-gray-600 border-gray-200"
+        return "bg-white/10 text-white/90 border-white/20"
     }
   }
 
@@ -74,58 +74,60 @@ export default function AttractionDetails() {
         style={{ isolation: "isolate" }}
         key={`attraction-${selectedAttraction.id}`}
       >
-        <CardHeader className="p-4 pb-2">
+        <CardHeader className="p-5 pb-3">
           <div className="flex justify-between items-start">
-            <div>
+            <div className="flex-1 mr-4">
               <div
-                className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium mb-2 ${getCategoryColor(selectedAttraction.category)}`}
+                className={`inline-flex items-center gap-2 px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-[0.2em] mb-3 border ${getCategoryColor(selectedAttraction.category)}`}
               >
                 <CategoryIcon category={selectedAttraction.category} />
-                <span className="capitalize">{selectedAttraction.category}</span>
+                <span>{selectedAttraction.category}</span>
               </div>
-              <CardTitle className="text-cali-blue">{selectedAttraction.name}</CardTitle>
+              <CardTitle className="text-white text-2xl font-black uppercase tracking-tighter leading-none mb-1 shadow-sm">
+                {selectedAttraction.name}
+              </CardTitle>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleClose}
-              className="hover:bg-cali-red/10 hover:text-cali-red"
+              className="bg-white/5 hover:bg-cali-red hover:text-white transition-all rounded-none border border-white/10"
             >
               <span className="sr-only">Cerrar</span>
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </Button>
           </div>
-          <CardDescription className="flex items-center gap-1">
-            <MapPin className="h-3 w-3 text-gray-400" />
-            <span>{selectedAttraction.location}</span>
+          <CardDescription className="flex items-center gap-2 mt-2">
+            <MapPin className="h-4 w-4 text-cali-red" />
+            <span className="text-white/60 font-medium text-xs uppercase tracking-widest">{selectedAttraction.location}</span>
           </CardDescription>
         </CardHeader>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-3 px-4 bg-cali-cream/50">
-            <TabsTrigger value="info" className="data-[state=active]:bg-cali-blue data-[state=active]:text-white">
-              Información
+          <TabsList className="flex w-full items-stretch justify-start p-1 bg-white/[0.03] border-b border-white/10 rounded-none h-12">
+            <TabsTrigger value="info" className="flex-1 data-[state=active]:bg-cali-red data-[state=active]:text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all rounded-none h-full border-x border-white/5">
+              Info
             </TabsTrigger>
-            <TabsTrigger value="gallery" className="data-[state=active]:bg-cali-orange data-[state=active]:text-white">
-              Galería
+            <TabsTrigger value="gallery" className="flex-1 data-[state=active]:bg-cali-green data-[state=active]:text-white font-black uppercase tracking-[0.2em] text-[10px] transition-all rounded-none h-full border-x border-white/5">
+              Media
             </TabsTrigger>
-            <TabsTrigger value="video" className="data-[state=active]:bg-cali-green data-[state=active]:text-white">
-              Video
+            <TabsTrigger value="video" className="flex-1 data-[state=active]:bg-cali-yellow data-[state=active]:text-black font-black uppercase tracking-[0.2em] text-[10px] transition-all rounded-none h-full border-x border-white/5">
+              Live
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="info" className="mt-0">
-            <CardContent className="p-4 pt-2 max-h-[50vh] overflow-y-auto">
-              <div className="flex items-center mb-2">
+            <CardContent className="p-5 pt-4 max-h-[50vh] overflow-y-auto space-y-6">
+              <div className="flex items-center">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
                     className={`h-4 w-4 ${
-                      i < selectedAttraction.rating ? "text-cali-yellow fill-cali-yellow" : "text-gray-300"
+                      i < selectedAttraction.rating ? "text-cali-yellow fill-cali-yellow" : "text-white/10"
                     }`}
                   />
                 ))}
-                <span className="text-xs text-gray-500 ml-1">({selectedAttraction.reviews} reseñas)</span>
+                <span className="text-[10px] font-bold text-white/30 ml-2 uppercase tracking-widest">({selectedAttraction.reviews} Reseñas)</span>
               </div>
 
               <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
@@ -139,49 +141,34 @@ export default function AttractionDetails() {
                     target.src = "/placeholder.svg?height=300&width=500&text=" + encodeURIComponent(selectedAttraction.name)
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-cali-blue">
-                  Atracción destacada
+                <div className="absolute bottom-3 left-3 glass-panel border border-white/10 px-4 py-1 rounded-none text-[10px] font-black uppercase tracking-[0.2em] text-white">
+                  SPOT.01 // DESTACADO
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm font-semibold mb-1 text-cali-blue">Descripción</h3>
-                  <p className="text-sm text-gray-600">{selectedAttraction.description}</p>
+                  <h3 className="text-[10px] font-black mb-3 text-cali-red uppercase tracking-[0.3em] flex items-center">
+                    <div className="w-4 h-[1px] bg-cali-red mr-2"></div> Descripción
+                  </h3>
+                  <p className="text-sm text-white/70 font-medium leading-relaxed uppercase tracking-wide italic">{selectedAttraction.description}</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 my-4">
-                  <div className="flex items-center gap-2 bg-cali-cream/30 p-3 rounded-lg">
-                    <Clock className="h-5 w-5 text-cali-orange" />
-                    <div>
-                      <p className="text-xs text-gray-500">Horario</p>
-                      <p className="text-sm font-medium">{selectedAttraction.hours}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 bg-cali-cream/30 p-3 rounded-lg">
-                    <DollarSign className="h-5 w-5 text-cali-green" />
-                    <div>
-                      <p className="text-xs text-gray-500">Precio</p>
-                      <p className="text-sm font-medium">{selectedAttraction.price}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 bg-cali-cream/30 p-3 rounded-lg">
-                    <Calendar className="h-5 w-5 text-cali-blue" />
-                    <div>
-                      <p className="text-xs text-gray-500">Duración</p>
-                      <p className="text-sm font-medium">{selectedAttraction.visitDuration}</p>
-                    </div>
-                  </div>
-                  {selectedAttraction.bestTime && (
-                    <div className="flex items-center gap-2 bg-cali-cream/30 p-3 rounded-lg">
-                      <ThumbsUp className="h-5 w-5 text-cali-red" />
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: Clock, label: "Horario", val: selectedAttraction.hours, col: "text-cali-yellow" },
+                    { icon: DollarSign, label: "Precio", val: selectedAttraction.price, col: "text-cali-green" },
+                    { icon: Calendar, label: "Duración", val: selectedAttraction.visitDuration, col: "text-cali-red" },
+                    { icon: ThumbsUp, label: "Peak Time", val: selectedAttraction.bestTime || "Todo el día", col: "text-cali-blue" }
+                  ].map((stat, idx) => (
+                    <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/5 p-3 group hover:border-white/10 transition-colors">
+                      <stat.icon className={`h-5 w-5 ${stat.col}`} />
                       <div>
-                        <p className="text-xs text-gray-500">Mejor momento</p>
-                        <p className="text-sm font-medium">{selectedAttraction.bestTime}</p>
+                        <p className="text-[9px] font-bold text-white/20 uppercase tracking-widest">{stat.label}</p>
+                        <p className="text-[11px] font-black text-white uppercase mt-0.5">{stat.val}</p>
                       </div>
                     </div>
-                  )}
+                  ))}
                 </div>
 
                 <div>
@@ -196,14 +183,14 @@ export default function AttractionDetails() {
                   </ul>
                 </div>
 
-                <div className="bg-cali-cream p-4 rounded-lg border border-cali-orange/20 relative">
-                  <div className="absolute -top-3 -right-3 bg-cali-orange text-white w-8 h-8 rounded-full flex items-center justify-center">
-                    <Info className="h-4 w-4" />
+                <div className="bg-gradient-to-br from-cali-red/10 to-transparent p-6 border border-cali-red/20 relative group overflow-hidden">
+                  <div className="absolute -top-4 -right-4 bg-cali-red text-white w-12 h-12 rounded-full flex items-center justify-center rotate-12 group-hover:rotate-0 transition-transform">
+                    <Info className="h-6 w-6" />
                   </div>
-                  <h3 className="text-sm font-semibold mb-2 text-cali-orange">¿Sabías que...?</h3>
-                  <p className="text-sm text-gray-700 italic">
+                  <h3 className="text-[10px] font-black mb-3 text-cali-red uppercase tracking-[0.4em]">¿SABÍAS QUE?</h3>
+                  <p className="text-xs text-white/80 font-bold uppercase tracking-wider leading-relaxed italic">
                     {selectedAttraction.funFact ||
-                      "Los caleños son conocidos por su alegría y amabilidad. ¡Pregúntale a cualquier local por recomendaciones y seguro te ayudará con una sonrisa!"}
+                      "Los caleños son conocidos por su alegría y amabilidad. ¡Pregúntale a cualquier local!"}
                   </p>
                 </div>
 
@@ -364,28 +351,25 @@ export default function AttractionDetails() {
           </TabsContent>
         </Tabs>
 
-        <CardFooter className="p-4 pt-0 flex justify-between">
+        <CardFooter className="p-4 border-t border-white/10 flex items-center justify-between bg-black/40 gap-4 mt-auto">
           <div className="flex gap-2">
             <Button
               variant="outline"
               size="icon"
-              className="bg-cali-cream/30 border-cali-orange/20 text-cali-orange hover:bg-cali-orange/10"
+              className="bg-white/5 border-white/10 text-white hover:bg-white/20 transition-all rounded-none w-10 h-10 shrink-0"
             >
               <Share2 className="h-4 w-4" />
-              <span className="sr-only">Compartir</span>
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="bg-cali-cream/30 border-cali-blue/20 text-cali-blue hover:bg-cali-blue/10"
+              className="bg-white/5 border-white/10 text-white hover:bg-white/20 transition-all rounded-none w-10 h-10 shrink-0"
             >
               <Info className="h-4 w-4" />
-              <span className="sr-only">Más información</span>
             </Button>
           </div>
           <Button
-            variant="outline"
-            className="bg-cali-orange text-white hover:bg-cali-orange/90 border-none btn-cali"
+            className="flex-1 bg-cali-red hover:bg-white hover:text-black text-white font-black uppercase tracking-[0.2em] h-10 rounded-none transition-all shadow-lg shadow-cali-red/20 text-xs truncate"
             onClick={() =>
               window.open(
                 `https://www.openstreetmap.org/directions?from=&to=${selectedAttraction.latitude}%2C${selectedAttraction.longitude}`,
